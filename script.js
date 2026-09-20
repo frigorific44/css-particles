@@ -34,8 +34,8 @@ function beddingAnimation(id, shapeClass, animClass) {
         `left: ${randomInt(0, 100)}%`,
         `width: ${heartSize}px`,
         `height: ${heartSize}px`,
-        `animation-delay: -${randomInt(0, 3)}s`,
-        `animation-duration: ${randomInt(2, 5)}s`
+        `animation-delay: -${randomInt(0, 3000)}ms`,
+        `animation-duration: ${randomInt(2000, 5000)}ms`
       ].join(";")
     );
     name.append(heart);
