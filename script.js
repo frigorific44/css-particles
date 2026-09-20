@@ -1,16 +1,18 @@
 const Anim = {
   FLOAT: 0,
   BURST: 1,
-  DRIFT_IN: 2
+  WALK_IN: 2
 };
 function animation(id, shapeClass, anim) {
   if (anim == Anim.FLOAT) {
     beddingAnimation(id, shapeClass, 'floating');
   } else if (anim == Anim.BURST) {
     burstAnimation(id, shapeClass);
+  } else if (anim == Anim.WALK_IN) {
+    beddingAnimation(id, shapeClass, 'walk-in');
   }
 }
-animation("to-animate", "four-star", Anim.FLOAT);
+animation("to-animate", "person", Anim.WALK_IN);
 
 function randomInt(m, n) {
   m = parseInt(m);
