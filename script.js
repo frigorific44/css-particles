@@ -5,7 +5,7 @@ const Anim = {
 };
 function animation(id, shapeClass, anim) {
   if (anim == Anim.FLOAT) {
-    floatingAnimation(id, shapeClass);
+    beddingAnimation(id, shapeClass, 'floating');
   } else if (anim == Anim.BURST) {
     burstAnimation(id, shapeClass);
   }
@@ -18,13 +18,13 @@ function randomInt(m, n) {
   return Math.floor(Math.random() * (n - m + 1)) + m;
 }
 
-function floatingAnimation(id, shapeClass) {
+function beddingAnimation(id, shapeClass, animClass) {
   const name = document.getElementById(id);
   var heartCount = (name.clientWidth / 50) * 5;
   for (var i = 0; i < heartCount; i++) {
     var heartSize = randomInt(60, 120) / 10;
     const heart = document.createElement("span");
-    heart.setAttribute("class", shapeClass + " floating particle");
+    heart.setAttribute("class", [shapeClass, animClass, "particle"].join(" "));
     heart.setAttribute(
       "style",
       [
