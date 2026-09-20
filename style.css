@@ -1,10 +1,10 @@
 @import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lovers+Quarrel&display=swap");
 
 :root {
-  --m-c: #eee8eb;
-  --m-o-c: #341d30;
-  --n-c: #f3e2e3;
-  --n-o-c: #4c061b;
+  --text-color: #eee8eb;
+  --text-shadow: #341d30;
+  --header-color: #f3e2e3;
+  --header-shadow: #4c061b;
   --particle-color: #d1104a;
 }
 
@@ -15,22 +15,22 @@ body {
 
 .alert-message {
   font-size: 90px;
-  color: var(--m-c);
+  color: var(--text-color);
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  text-shadow: 0px 0px 4px var(--m-o-c);
+  text-shadow: 0px 0px 4px var(--text-shadow);
 }
 
 .alert-name {
   font-family: "Berkshire Swash", cursive;
   font-size: 50px;
-  color: var(--n-c);
+  color: var(--header-color);
   cursor: pointer;
   display: inline-block;
   position: relative;
-  text-shadow: 0px 0px 4px var(--n-o-c);
+  text-shadow: 0px 0px 4px var(--header-shadow);
 }
 
 .particle {
