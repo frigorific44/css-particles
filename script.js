@@ -3,6 +3,7 @@ const Anim = {
   BURST: 1,
   WALK_IN: 2
 };
+const linearDensityRate = 0.1;
 function animation(id, shapeClass, anim) {
   if (anim == Anim.FLOAT) {
     beddingAnimation(id, shapeClass, 'floating');
@@ -12,7 +13,7 @@ function animation(id, shapeClass, anim) {
     beddingAnimation(id, shapeClass, 'walk-in');
   }
 }
-animation("to-animate", "person", Anim.WALK_IN);
+animation("to-animate", "four-star", Anim.BURST);
 
 function randomInt(m, n) {
   m = parseInt(m);
@@ -22,7 +23,7 @@ function randomInt(m, n) {
 
 function beddingAnimation(id, shapeClass, animClass) {
   const name = document.getElementById(id);
-  var heartCount = (name.clientWidth / 50) * 5;
+  var heartCount = name.clientWidth * linearDensityRate;
   for (var i = 0; i < heartCount; i++) {
     var heartSize = randomInt(60, 120) / 10;
     const heart = document.createElement("span");
@@ -44,7 +45,7 @@ function beddingAnimation(id, shapeClass, animClass) {
 
 function burstAnimation(id, shapeClass) {
   const name = document.getElementById(id);
-  var heartCount = (name.clientWidth / 50) * 5;
+  var heartCount = name.clientWidth * 2 * linearDensityRate;
   for (var i = 0; i < heartCount; i++) {
     var heartSize = randomInt(80, 160) / 10;
     const heart = document.createElement("span");
