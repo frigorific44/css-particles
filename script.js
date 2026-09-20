@@ -1,7 +1,13 @@
+const Shape = {
+  HEART: 'heart',
+  FOUR_STAR: 'four-star',
+  PERSON: 'person'
+}
 const Anim = {
   FLOAT: 0,
   BURST: 1,
-  WALK_IN: 2
+  WALK_IN: 2,
+  EMANATE: 3
 };
 const linearDensityRate = 0.1;
 function animation(id, shapeClass, anim) {
@@ -11,9 +17,11 @@ function animation(id, shapeClass, anim) {
     burstAnimation(id, shapeClass);
   } else if (anim == Anim.WALK_IN) {
     beddingAnimation(id, shapeClass, 'walk-in');
+  } else if (anim == Anim.EMANATE) {
+    emanationAnimation(id, shapeClass);
   }
 }
-animation("to-animate", "four-star", Anim.BURST);
+animation("to-animate", Shape.FOUR_STAR, Anim.EMANATE);
 
 function randomInt(m, n) {
   m = parseInt(m);
@@ -37,6 +45,33 @@ function beddingAnimation(id, shapeClass, animClass) {
         `height: ${heartSize}px`,
         `animation-delay: -${randomInt(0, 3000)}ms`,
         `animation-duration: ${randomInt(2000, 5000)}ms`
+      ].join(";")
+    );
+    name.append(heart);
+  }
+}
+
+function emanationAnimation(id, shapeClass) {
+  const name = document.getElementById(id);
+  var heartCount = name.clientWidth * 2 * linearDensityRate;
+  console.log(`Height: ${name.clientHeight}`);
+  for (var i = 0; i < heartCount; i++) {
+    var heartSize = randomInt(80, 160) / 10;
+    var top = randomInt(40, 80);
+    var left = randomInt(0, 100);
+    var theta = randomInt(0, 360);
+    const heart = document.createElement("span");
+    heart.setAttribute("class", shapeClass + " shooting-star particle");
+    heart.setAttribute(
+      "style",
+      [
+        `top: ${top}%`,
+        `left: ${left}%`,
+        `width: ${heartSize}px`,
+        `height: ${heartSize}px`,
+        `--r:${theta}deg`,
+        `animation-delay: -${randomInt(0, 3000)}ms`,
+        `animation-duration: ${randomInt(1000, 2000)}ms`
       ].join(";")
     );
     name.append(heart);
