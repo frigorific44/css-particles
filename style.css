@@ -1,0 +1,133 @@
+@import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lovers+Quarrel&display=swap");
+
+:root {
+  --m-c: #eee8eb;
+  --m-o-c: #341d30;
+  --n-c: #f3e2e3;
+  --n-o-c: #4c061b;
+  --particle-color: #d1104a;
+}
+
+body {
+  font-family: "Lovers Quarrel", cursive;
+  background-color: #2b2d42;
+}
+
+.alert-message {
+  font-size: 90px;
+  color: var(--m-c);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-shadow: 0px 0px 4px var(--m-o-c);
+}
+
+.alert-name {
+  font-family: "Berkshire Swash", cursive;
+  font-size: 50px;
+  color: var(--n-c);
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  text-shadow: 0px 0px 4px var(--n-o-c);
+}
+
+.particle {
+  z-index: -1;
+  position: absolute;
+  color: var(--particle-color);
+  box-shadow: 0px 0px 50px 4px;
+}
+
+.particle:before,
+.particle:after {
+  content: "";
+  position: absolute;
+  background-color: var(--particle-color);
+}
+
+/* A heart-shaped element */
+.heart {
+  opacity: 0;
+  background-color: var(--particle-color);
+}
+.heart:before,
+.heart:after {
+  border-radius: 50%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.heart:before {
+  transform: translateX(-50%);
+}
+.heart:after {
+  transform: translateY(-50%);
+}
+
+/* 4-pointed star */
+.four-star:before,
+.four-star:after {
+  width: 100%;
+  height: 115%;
+}
+.four-star:before {
+  transform: rotate(-45deg) skewX(22.5deg) skewY(22.5deg);
+}
+.four-star:after {
+  transform: rotate(45deg) skewX(22.5deg) skewY(22.5deg);
+}
+
+.drift-in {
+  animation: animate-drift-in infinite ease-in;
+}
+@keyframes animate-drift-in {
+  0% {
+    opacity: 0;
+    transform: translate(0, -1000%) rotate(45deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0, -40%) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(45deg);
+  }
+}
+
+.floating {
+  animation: animate-floating infinite ease-in;
+}
+@keyframes animate-floating {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0) rotate(45deg);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(0, -40%) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, -1000%) rotate(45deg);
+  }
+}
+
+.shooting-star {
+  animation: animate-shooting-star infinite ease-in;
+  top: 50%;
+  left: 50%;
+}
+@keyframes animate-shooting-star {
+  0% {
+    opacity: 1;
+    transform: rotate(var(--r, 0deg)) translateY(0) rotate(45deg);
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(var(--r, 0deg)) translateY(-1000%) rotate(45deg);
+  }
+}
