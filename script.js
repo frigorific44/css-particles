@@ -1,27 +1,20 @@
-const Shape = {
-  HEART: 'heart',
-  FOUR_STAR: 'four-star',
-  PERSON: 'person'
-}
-const Anim = {
-  FLOAT: 0,
-  BURST: 1,
-  WALK_IN: 2,
-  EMANATE: 3
-};
 const linearDensityRate = 0.1;
-function animation(id, shapeClass, anim) {
-  if (anim == Anim.FLOAT) {
-    beddingAnimation(id, shapeClass, 'floating');
-  } else if (anim == Anim.BURST) {
-    burstAnimation(id, shapeClass);
-  } else if (anim == Anim.WALK_IN) {
-    beddingAnimation(id, shapeClass, 'walk-in');
-  } else if (anim == Anim.EMANATE) {
-    emanationAnimation(id, shapeClass);
+
+document.querySelectorAll('.to-animate').forEach(function(element) {
+  var anim = element.dataset.animation;
+  var shape = element.dataset.shape;
+  console.log(`animation: ${anim}`);
+  console.log(`shape: ${shape}`);
+  if (anim == 'float') {
+    beddingAnimation(element, shape, 'floating');
+  } else if (anim == 'burst') {
+    burstAnimation(element, shape);
+  } else if (anim == 'walk-in') {
+    beddingAnimation(element, shape, 'walk-in');
+  } else if (anim == 'emanate') {
+    emanationAnimation(element, shape);
   }
-}
-animation("to-animate", Shape.FOUR_STAR, Anim.EMANATE);
+})
 
 function randomInt(m, n) {
   m = parseInt(m);
@@ -29,9 +22,8 @@ function randomInt(m, n) {
   return Math.floor(Math.random() * (n - m + 1)) + m;
 }
 
-function beddingAnimation(id, shapeClass, animClass) {
-  const name = document.getElementById(id);
-  var heartCount = name.clientWidth * linearDensityRate;
+function beddingAnimation(element, shapeClass, animClass) {
+  var heartCount = element.clientWidth * linearDensityRate;
   for (var i = 0; i < heartCount; i++) {
     var heartSize = randomInt(60, 120) / 10;
     const heart = document.createElement("span");
@@ -47,14 +39,13 @@ function beddingAnimation(id, shapeClass, animClass) {
         `animation-duration: ${randomInt(2000, 5000)}ms`
       ].join(";")
     );
-    name.append(heart);
+    element.append(heart);
   }
 }
 
-function emanationAnimation(id, shapeClass) {
-  const name = document.getElementById(id);
-  var heartCount = name.clientWidth * 2 * linearDensityRate;
-  console.log(`Height: ${name.clientHeight}`);
+function emanationAnimation(element, shapeClass) {
+  var heartCount = element.clientWidth * 2 * linearDensityRate;
+  console.log(`Height: ${element.clientHeight}`);
   for (var i = 0; i < heartCount; i++) {
     var heartSize = randomInt(80, 160) / 10;
     var top = randomInt(40, 80);
@@ -74,13 +65,12 @@ function emanationAnimation(id, shapeClass) {
         `animation-duration: ${randomInt(1000, 2000)}ms`
       ].join(";")
     );
-    name.append(heart);
+    element.append(heart);
   }
 }
 
-function burstAnimation(id, shapeClass) {
-  const name = document.getElementById(id);
-  var heartCount = name.clientWidth * 2 * linearDensityRate;
+function burstAnimation(element, shapeClass) {
+  var heartCount = element.clientWidth * 2 * linearDensityRate;
   for (var i = 0; i < heartCount; i++) {
     var heartSize = randomInt(80, 160) / 10;
     const heart = document.createElement("span");
@@ -95,6 +85,6 @@ function burstAnimation(id, shapeClass) {
         `animation-duration: ${randomInt(1000, 2000)}ms`
       ].join(";")
     );
-    name.append(heart);
+    element.append(heart);
   }
 }
