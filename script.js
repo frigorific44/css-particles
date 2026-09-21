@@ -22,6 +22,10 @@ function randomInt(m, n) {
   return Math.floor(Math.random() * (n - m + 1)) + m;
 }
 
+function lerp(start, end, amount) {
+  return (start*amount) + (end * (1-amount));
+}
+
 function beddingAnimation(element, shapeClass, animClass) {
   var heartCount = element.clientWidth * linearDensityRate;
   for (var i = 0; i < heartCount; i++) {
@@ -48,9 +52,12 @@ function emanationAnimation(element, shapeClass) {
   console.log(`Height: ${element.clientHeight}`);
   for (var i = 0; i < heartCount; i++) {
     var heartSize = randomInt(80, 160) / 10;
-    var top = randomInt(40, 80);
+    var top = randomInt(20, 80);
     var left = randomInt(0, 100);
-    var theta = randomInt(0, 360);
+    var theta = lerp(90, -90, left/100);
+    if (top > 50) {
+      theta = 180 - theta;
+    }
     const heart = document.createElement("span");
     heart.setAttribute("class", shapeClass + " shooting-star particle");
     heart.setAttribute(
