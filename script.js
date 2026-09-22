@@ -1,4 +1,4 @@
-const linearDensityRate = 0.1;
+linearDensityRate = 0.1;
 
 document.querySelectorAll('.to-animate').forEach(function(element) {
   var anim = element.dataset.animation;
