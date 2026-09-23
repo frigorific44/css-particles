@@ -1,11 +1,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Lovers+Quarrel&display=swap");
 
 :root {
-  --text-color: #eee8eb;
-  --text-shadow: #341d30;
-  --header-color: #f3e2e3;
-  --header-shadow: #4c061b;
-  --particle-color: #d1104a;
+  --text-color: #fcd9e4;
+  --text-shadow: #26030d;
+  --header-color: #e2cbdd;
+  --header-shadow: #1a0f18;
+  --particle-color: #b65459;
 }
 
 body {
